@@ -1,0 +1,35 @@
+<h1>ログイン</h1>
+<form id="loginForm" action="">
+  <div class="input-group width80per">
+    <span class="input-group-addon">ID</span>
+    <input type="text" class="form-control" id="uid" name="id">
+  </div>
+  <div class="input-group width80per">
+    <span class="input-group-addon">Password</span>
+    <input type="text" class="form-control" id="upass" name="pass">
+  </div>
+  <button id="loginButton" class="btn btn-success">ログイン</button>
+</form>
+
+<script>
+  $(function(){
+    $("#loginButton").click(function(){
+      var userId = $("#uid").val();
+      var userPass = $("#upass").val();
+
+      $.ajax({
+        type:'post',
+        url:'./rb/login.rb',
+        data:{id : userId, pass : userPass },
+        dataType: 'html',
+        success: function(page){
+          //pageAllocator(page);
+          alert(page);
+        },
+        error: function() {
+          alert("ログインに失敗しました");
+        }
+      });
+    });
+  });
+</script>

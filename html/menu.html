@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default margin0px">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" onclick="pageAllocator('#contents','')">TOPへ</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav">
+				<li><a href="#" onclick="pageAllocator('#contents','./page1.html')">page1</a></li>
+				<li><a href="#">page2</a></li>
+				<li><a href="#">page3</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<script type="text/javascript">
+$(function(){
+  $(".navbar-nav li a").click(function(event){
+    $(".navbar-collapse").collapse('hide');
+  });
+});
+</script>

@@ -17,8 +17,9 @@
       var userId = $("#uid").val();
       var userPass = $("#upass").val();
 
+
       $.ajax({
-        type:'post',
+        type:'POST',
         url:'./rb/login.rb',
         data:{id : userId, pass : userPass },
         dataType: 'html',
@@ -27,6 +28,7 @@
           alert(page);
         },
         error: function() {
+          console.log();
           alert("ログインに失敗しました");
         }
       });

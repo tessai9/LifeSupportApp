@@ -17,18 +17,15 @@
       var userId = $("#uid").val();
       var userPass = $("#upass").val();
 
-
       $.ajax({
         type:'POST',
-        url:'./rb/login.rb',
-        data:{id : userId, pass : userPass },
-        dataType: 'html',
+        url:'./rb/server.rb',
+        data:{target : login, id : userId, pass : userPass },
+        dataType: 'text',
         success: function(page){
-          //pageAllocator(page);
-          alert(page);
+          pageAllocator(page);
         },
         error: function() {
-          console.log();
           alert("ログインに失敗しました");
         }
       });

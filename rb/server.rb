@@ -1,6 +1,6 @@
 require "webrick"
 #require "uri"
-require "swich"
+require "./switch.rb"
 
 class ServletAction < WEBrick::HTTPServlet::AbstractServlet
     def do_POST (req, res)
@@ -14,7 +14,9 @@ server = WEBrick::HTTPServer.new({
     :Port => '8000'
   })
 server.mount_proc('/rb'){|req,res|
-  res.body = Switch::show_page(req)
+  #reqs = req
+  #res.body = Switch.show_page(req)
+  res.body = req.to_s
 }
 trap("INT"){ server.shutdown }
 server.start

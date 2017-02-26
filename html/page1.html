@@ -19,11 +19,16 @@
 
       $.ajax({
         type:'POST',
-        url:'./rb/server.rb',
+        url:'../rb/server.rb',
         data:{target : login, id : userId, pass : userPass },
         dataType: 'text',
         success: function(page){
-          pageAllocator(page);
+//          if ("error") {
+//            alert("ログインに失敗しました");
+//          } else {
+//            pageAllocator(page);
+//          }
+          alert(page)
         },
         error: function() {
           alert("ログインに失敗しました");

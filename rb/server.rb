@@ -14,10 +14,8 @@ server = WEBrick::HTTPServer.new({
     :Port => '8000'
   })
 server.mount_proc('/rb'){|req,res|
-  #reqs = req
-  #res.body = Switch.show_page(req)
   res.content_type = "text/plain"
-  res.body = req.to_s
+  res.body = req.body
 }
 trap("INT"){ server.shutdown }
 server.start

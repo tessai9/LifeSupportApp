@@ -17,21 +17,20 @@
       var userId = $("#uid").val();
       var userPass = $("#upass").val();
 
-      $.ajax({
-        type:'POST',
+      $.post({
         url:'../rb/server.rb',
-        data:{target : login, id : userId, pass : userPass },
-        dataType: 'text',
-        success: function(page){
-//          if ("error") {
-//            alert("ログインに失敗しました");
-//          } else {
-//            pageAllocator(page);
-//          }
-          alert(page)
+        data:{target : 'login', id : userId, pass : userPass },
+        dataType:'text',
+        success: function(flag){
+          if (flag) {
+            //pageAllocator('#contents','./top.html');
+            alert(flag);
+          } else {
+            pageAllocator('#contents','./html/error.html');
+          }
         },
-        error: function() {
-          alert("ログインに失敗しました");
+        error: function(){
+          pageAllocator('#contents','./html/error.html');
         }
       });
     });

@@ -16,6 +16,7 @@ server = WEBrick::HTTPServer.new({
 server.mount_proc('/rb'){|req,res|
   #reqs = req
   #res.body = Switch.show_page(req)
+  res.content_type = "text/plain"
   res.body = req.to_s
 }
 trap("INT"){ server.shutdown }

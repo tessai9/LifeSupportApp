@@ -28,11 +28,14 @@ $(function(){
 });
 
 function switchDebugMode(){
-	if (localStorage.getItem("debugFlg")) {
+	if (!localStorage.getItem("debugFlg")) {
 		localStorage.setItem("debugFlg",true);
 		localStorage.setItem("user",true);
+		alert("debug mode on");
 	} else {
 		localStorage.clear();
+		pageAllocator('#contents','');
+		alert("debug mode off");
 	}
 }
 

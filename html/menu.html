@@ -12,8 +12,8 @@
 
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li><a href="#" onclick="pageAllocator('#contents','./html/page1.html')">ログイン</a></li>
-				<li><a href="#" onclick="pageAllocator('#contents','./html/page2.html')">収支管理</a></li>
+				<li id="login"><a href="#"></a></li>
+				<li id="money"><a href="#" onclick="pageAllocator('#contents','./html/page2.html')">収支管理</a></li>
 				<li><a href="#" onclick="switchDebugMode();">debug mode</a></li>
 			</ul>
 		</div>
@@ -21,22 +21,32 @@
 </nav>
 
 <script type="text/javascript">
+// 関数定義
+function switchDebugMode(){
+	if (!localStorage.getItem("debugFlg")) {
+		alert("debug mode on");
+		localStorage.setItem("debugFlg",true);
+		localStorage.setItem("user","test");
+		pageAllocator('#contents','');
+	} else {
+		alert("debug mode off");
+		localStorage.clear();
+		pageAllocator('#contents','');
+	}
+}
+
+// 処理部
 $(function(){
   $(".navbar-nav li a").click(function(event){
     $(".navbar-collapse").collapse('hide');
   });
 });
 
-function switchDebugMode(){
-	if (!localStorage.getItem("debugFlg")) {
-		localStorage.setItem("debugFlg",true);
-		localStorage.setItem("user",true);
-		alert("debug mode on");
-	} else {
-		localStorage.clear();
-		pageAllocator('#contents','');
-		alert("debug mode off");
-	}
+if(!localStorage.getItem("user")){
+	$("#login a").html("ログイン");
+	$("#login").click(pageAllocator('#contents','./html/page1.html'))
+}else{
+	$("#login a").html("My Page");
+	$("#login").click(pageAllocator('#contents','./html/mypage.html'))
 }
-
 </script>

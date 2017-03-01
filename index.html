@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="css/base.css">
   <script type="text/javascript">
     <!--
+      // 変数定義
+      var userInfo = new Array;
+
       // 関数定義
 
       // ページ割り当て関数
@@ -17,6 +20,11 @@
         $(function(){
           $(target).load(pageName);
         });
+      }
+
+      // フラグ変更処理
+      function switchFlg(flg,status){
+        flg = status;
       }
 
 

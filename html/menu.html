@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default margin0px">
+<nav class="navbar navbar-default margin0px" id="header_menu">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -12,9 +12,9 @@
 
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li><a href="#" onclick="pageAllocator('#contents','./html/page1.html')">page1</a></li>
-				<li><a href="#">page2</a></li>
-				<li><a href="#">page3</a></li>
+				<li><a href="#" onclick="pageAllocator('#contents','./html/page1.html')">ログイン</a></li>
+				<li><a href="#" onclick="pageAllocator('#contents','./html/page2.html')">収支管理</a></li>
+				<li><a href="#" onclick="switchDebugMode();">debug mode</a></li>
 			</ul>
 		</div>
 	</div>
@@ -26,4 +26,14 @@ $(function(){
     $(".navbar-collapse").collapse('hide');
   });
 });
+
+function switchDebugMode(){
+	if (localStorage.getItem("debugFlg")) {
+		localStorage.setItem("debugFlg",true);
+		localStorage.setItem("user",true);
+	} else {
+		localStorage.clear();
+	}
+}
+
 </script>

@@ -25,7 +25,11 @@
       // メニューバー設定
       pageAllocator("#menu_bar","./html/menu.html");
       // デフォルトトップ
-      pageAllocator("#contents","./html/page1.html");
+      if(localStorage.getItem("user")){
+        pageAllocator("#contents","./html/top.html");
+      }else{
+        pageAllocator("#contents","./html/page1.html");
+      }
 
     //-->
   </script>

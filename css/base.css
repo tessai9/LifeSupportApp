@@ -23,8 +23,16 @@
   margin-top: 50%;
 }
 
+.marginRight30px{
+  margin-right: 30px;
+}
+
 .padding5px{
   padding: 5px;
+}
+
+.width20per{
+  width: 20%;
 }
 
 .width50per{
@@ -33,6 +41,10 @@
 
 .width80per{
   width: 80%;
+}
+
+.float_r{
+  float: right;
 }
 
 #contents{

@@ -13,7 +13,7 @@
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
 				<li id="login"><a href="#"></a></li>
-				<li id="money"><a href="#" onclick="pageAllocator('#contents','./html/page2.html')">収支管理</a></li>
+				<li id="money"><a href="#" onclick="pageAllocator('#contents','./html/money.html')">収支管理</a></li>
 				<li><a href="#" onclick="switchDebugMode();">debug mode</a></li>
 			</ul>
 		</div>
@@ -49,7 +49,7 @@ $(function(){
 // ログイン前後の遷移先表示
 if(!localStorage.getItem("user")){
 	$("#login a").html("ログイン");
-	$("#login").click(pageAllocator('#contents','./html/page1.html'))
+	$("#login").click(pageAllocator('#contents','./html/login.html'))
 }else{
 	$("#login a").html("My Page");
 	$("#login").click(pageAllocator('#contents','./html/mypage.html'))

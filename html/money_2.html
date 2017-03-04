@@ -14,4 +14,13 @@
   </div>
 </div>
 <br>
-<div align="right" class="marginRight30px"><button type="button" class="btn btn-primary btn-lg">登録</button></div>
+<div align="right" class="marginRight30px"><button id="money_register" type="button" class="btn btn-primary btn-lg">登録</button></div>
+
+<script>
+$("#money_register").bind('click', function(){
+  var category = $("#InputSelect").val();
+  var name = $("#InputName").val();
+  var amount = $("#InputAmount").val();
+  //$.ajax();
+});
+</script>

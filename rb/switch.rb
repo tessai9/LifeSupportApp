@@ -13,7 +13,9 @@ class SwitchPage
   private
   @DEF_TARGETS = [
     "login",
-    "money"
+    "money",
+    "memo",
+    "todo"
   ]
 
   public

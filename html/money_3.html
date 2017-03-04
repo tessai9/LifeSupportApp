@@ -1,0 +1,23 @@
+<h1>支出カテゴリー追加</h1>
+<div align="center">
+  <div class="form-group margin5px width50per" id="new_category">
+    <label for="input_new_category">収支名</label>
+    <input type="text" class="form-control" id="input_new_category"></select>
+  </div><br>
+  <div id="in_or_out" class="form-group margin5px width50per">
+    <label for="input_in_or_out">収支カテゴリ</label>
+    <select class="form-control" id="input_in_or_out"></select>
+    <option value="in">収入</option>
+    <option value="out">支出</option>
+  </div>
+</div>
+<br>
+<div align="right" class="marginRight30px"><button id="money_register_category" type="button" class="btn btn-primary btn-lg">登録</button></div>
+
+<script>
+$("#money_register_category").bind("click",function(){
+  var newCategoryName = $("#input_new_category").val();
+  var newInOut = $("#input_in_or_out").val();
+  // $.ajax();
+});
+</script>

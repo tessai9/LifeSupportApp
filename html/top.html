@@ -3,7 +3,7 @@
   <span id="top_setting" class="panel_span line_height_100px" onclick="pageAllocator('#contents','./html/setting.html')"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Setting</span>
 </div>
 <div id="section2" class="margin5px">
-  <span id="top_topic1" class="panel_span line_height_100px" onclick="pageAllocator('#contents','./html/page2.html')">収支管理<br><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></span>
+  <span id="top_topic1" class="panel_span line_height_100px" onclick="pageAllocator('#contents','./html/money.html')">収支管理<br><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></span>
   <span class="width50per panel_span">
     <span id="top_topic2" class="line_height_80px" onclick="pageAllocator('#contents','./html/page3.html')"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> todoリスト</span>
     <span id="top_topic3" class="marginTop5px" onclick="pageAllocator('#contents','./html/page4.html')"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 備忘録（メモ）</span>
@@ -11,6 +11,15 @@
 </div>
 
 <script>
+// 処理部
+
+// 各ボタンのクリック時アクション
+changePanelColor('#top_mypage','#ff6347','#CC0033');
+changePanelColor('#top_setting','#1e90ff','#3333CC');
+changePanelColor('#top_topic1','#3cb371','#006600');
+changePanelColor('#top_topic2','#f0e68c','#FF6600');
+changePanelColor('#top_topic3','#ffc0cb','#FF6666');
+
 // 関数定義
 
 // マウスダウン・アップでの背景色変更メソッド
@@ -25,14 +34,5 @@ function changePanelColor(target,downColor,upColor){
     })
   });
 }
-
-// 処理部
-
-// 各ボタンのクリック時アクション
-changePanelColor('#top_mypage','#ff6347','#CC0033');
-changePanelColor('#top_setting','#1e90ff','#3333CC');
-changePanelColor('#top_topic1','#3cb371','#006600');
-changePanelColor('#top_topic2','#f0e68c','#FF6600');
-changePanelColor('#top_topic3','#ffc0cb','#FF6666');
 
 </script>

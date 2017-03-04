@@ -1,0 +1,31 @@
+<h1 class="margin5px">支出管理</h1>
+<div id="money_need_login" class="margin5px" align="center">
+  <h2>ログインして自分の収支管理をしよう！</h2>
+  <button class="btn" onclick="pageAllocator('#contents','./html/login.html')"></button>
+</div>
+<div id="money_menu" class="margin5px width50per">
+  <div class="form-group" id="money_category">
+		<label for="InputSelect">収支カテゴリ</label>
+		<select class="form-control" id="InputSelect"></select>
+	</div>
+  <button class="btn btn-primary" onclick="pageAllocator('#contents','./html/money_2.html')"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add New</button>
+</div>
+
+<table class="margin5px">
+</table>
+
+<script>
+// 処理部
+
+// ログイン状況によって表示を変更
+if(!localStorage.getItem("user")){
+  $("#money_menu").css("display","none");
+}else{
+  $("#money_need_login").css("display","none");
+}
+
+// 関数定義
+
+// 
+
+</script>

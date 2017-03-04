@@ -22,6 +22,8 @@
 
 <script type="text/javascript">
 // 関数定義
+
+// デバッグモード
 function switchDebugMode(){
 	if (!localStorage.getItem("debugFlg")) {
 		alert("debug mode on");
@@ -36,12 +38,15 @@ function switchDebugMode(){
 }
 
 // 処理部
+
+// ナビゲーションバーの表示・非表示設定
 $(function(){
   $(".navbar-nav li a").click(function(event){
     $(".navbar-collapse").collapse('hide');
   });
 });
 
+// ログイン前後の遷移先表示
 if(!localStorage.getItem("user")){
 	$("#login a").html("ログイン");
 	$("#login").click(pageAllocator('#contents','./html/page1.html'))

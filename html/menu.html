@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#" onclick="pageAllocator('#contents','')">TOPへ</a>
+			<a href="#" class="navbar-brand">TOPへ</a>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar">
@@ -21,6 +21,42 @@
 </nav>
 
 <script type="text/javascript">
+// 処理部
+
+// ナビゲーションバーの表示・非表示設定
+$(function(){
+  $(".navbar-nav li").click(function(){
+    $(".navbar-collapse").collapse('hide');
+//			$('.navbar-toggle').click();
+  });
+	$("#contents").click(function(){
+		$(".navbar-collapse").collapse('hide');
+//		if (window.innerWidth <= 768) {
+//			$('.navbar-toggle').click();
+//		}
+	});
+	$("#menu_bar").click(function(){
+		$(".navbar-collapse").collapse('hide');
+//		if (window.innerWidth <= 768) {
+//			$('.navbar-toggle').click();
+//		}
+	});
+});
+
+// ヘッダーからのページ遷移
+$(".navbar-brand").click(function(){
+	pageAllocator("#contents",'');
+});
+
+// ログイン前後の遷移先表示
+if(!localStorage.getItem("user")){
+	$("#login a").html("ログイン");
+	$("#login").click(pageAllocator('#contents','./html/login.html'))
+}else{
+	$("#login a").html("My Page");
+	$("#login").click(pageAllocator('#contents','./html/mypage.html'))
+}
+
 // 関数定義
 
 // デバッグモード
@@ -37,21 +73,5 @@ function switchDebugMode(){
 	}
 }
 
-// 処理部
 
-// ナビゲーションバーの表示・非表示設定
-$(function(){
-  $(".navbar-nav li a").click(function(event){
-    $(".navbar-collapse").collapse('hide');
-  });
-});
-
-// ログイン前後の遷移先表示
-if(!localStorage.getItem("user")){
-	$("#login a").html("ログイン");
-	$("#login").click(pageAllocator('#contents','./html/login.html'))
-}else{
-	$("#login a").html("My Page");
-	$("#login").click(pageAllocator('#contents','./html/mypage.html'))
-}
 </script>

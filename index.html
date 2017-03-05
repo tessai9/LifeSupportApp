@@ -6,23 +6,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/base.css">
   <script type="text/javascript">
     <!--
-      // 変数定義
-      var userInfo = new Array;
-
       // 処理部分
 
-      // メニューバー設定
-      pageAllocator("#menu_bar","./html/menu.html");
-      // デフォルトトップ
-      if(localStorage.getItem("user")){
-        pageAllocator("#contents","./html/top.html");
-      }else{
-        pageAllocator("#contents","./html/page1.html");
-      }
 
       // 関数定義
 
@@ -33,10 +24,27 @@
         });
       }
 
+      // 画面初期化関数
+      function deviceInit(){
+        // ページ表示
+        if(localStorage.getItem("user")){
+          pageAllocator("#contents","./html/top.html");
+        }else{
+          pageAllocator("#contents","./html/login.html");
+        }
+        // メニューバー表示
+        pageAllocator("#menu_bar","./html/menu.html");
+      }
+
+      // ロード時処理
+      function onload(){
+        document.addEventListener("deviceready",deviceInit(),false);
+      }
+
     //-->
   </script>
 </head>
-<body>
+<body onload="onload()">
   <div id="menu_bar"></div>
   <div id="contents"></div>
 </body>

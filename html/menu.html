@@ -12,9 +12,13 @@
 
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li id="login"><a href="#"></a></li>
-				<li id="money"><a href="#" onclick="pageAllocator('#contents','./html/money.html')">収支管理</a></li>
-				<li><a href="#" onclick="switchDebugMode();">debug mode</a></li>
+				<li id="login" onclick="pageAllocator('#contents','./html/login.html')"><a href="#">Login</a></li>
+				<li id="top" onclick="pageAllocator('#contents','./html/top.html')"><a href="#">Mypage</a></li>
+				<li id="money" onclick="pageAllocator('#contents','./html/money.html')"><a href="#">収支管理</a></li>
+				<li id="todo" onclick="pageAllocator('#contents','./html/todo.html')"><a href="#">todoリスト</a></li>
+				<li id="memo" onclick="pageAllocator('#contents','./html/memo.html')"><a href="#">備忘録</a></li>
+				<li id="logout"><a href="#" onclick="pageAllocator('#contents','./html/login.html')">Logout</a></li>
+				<li id="debug_mode"><a href="#" onclick="switchDebugMode();">debug mode</a></li>
 			</ul>
 		</div>
 	</div>
@@ -41,33 +45,41 @@ $(function(){
 
 // ヘッダーからのページ遷移
 $(".navbar-brand").click(function(){
-	pageAllocator("#contents",'');
+	pageAllocator("#contents",'./html/top.html');
 });
 
 // ログイン前後の遷移先表示
 if(!localStorage.getItem("user")){
-	$("#login a").html("ログイン");
-	$("#login").click(pageAllocator('#contents','./html/login.html'))
+	$("#top").css('display','none');
+	$("#logout").css('display','none');
 }else{
-	$("#login a").html("My Page");
-	$("#login").click(pageAllocator('#contents','./html/mypage.html'))
+	$("#login").css('display','none');
 }
+
+// ログアウトボタンの挙動
+$("#logout").bind('click',logout());
 
 // 関数定義
 
-// デバッグモード
+// デバッグモード切り替え関数
 function switchDebugMode(){
 	if (!localStorage.getItem("debugFlg")) {
 		alert("debug mode on");
 		localStorage.setItem("debugFlg",true);
 		localStorage.setItem("user","test");
-		pageAllocator('#contents','');
+		localStorage.setItem("pass","test");
+		deviceInit();
 	} else {
 		alert("debug mode off");
 		localStorage.clear();
-		pageAllocator('#contents','');
+		deviceInit();
 	}
 }
 
+// ユーザー情報の削除
+function logout(){
+	localStorage.removeItem("user");
+	localStorage.removeItem("pass");
+}
 
 </script>

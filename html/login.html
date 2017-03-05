@@ -8,7 +8,7 @@
     <span class="input-group-addon">Password</span>
     <input type="text" class="form-control" id="upass" name="pass">
   </div>
-  <button id="loginButton" class="btn btn-success margin5px">ログイン</button>
+  <button id="loginButton" class="btn btn-success margin5px">Login</button>
 </form>
 
 <script>
@@ -23,7 +23,9 @@
         dataType:'text',
         success: function(flag){
           if (flag) {
-            //pageAllocator('#contents','./top.html');
+            //pageAllocator('#contents','./html/top.html');
+            //localStorage.setItem('user',userId);
+            //localStorage.setItem('pass',userPass);
             alert(flag);
           } else {
             pageAllocator('#contents','./html/error.html');

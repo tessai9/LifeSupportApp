@@ -27,7 +27,7 @@
       // 画面初期化関数
       function deviceInit(){
         // ページ表示
-        if(localStorage.getItem("user")){
+        if(sessionStorage.getItem("user")){   // ログイン情報はsessionStorageを参照
           pageAllocator("#contents","./html/top.html");
         }else{
           pageAllocator("#contents","./html/login.html");

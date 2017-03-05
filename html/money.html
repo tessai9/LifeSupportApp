@@ -18,14 +18,12 @@
 // 処理部
 
 // ログイン状況によって表示を変更
-if(!localStorage.getItem("user")){
+if(!sessionStorage.getItem("loginFlg")){
   $("#money_menu").css("display","none");
 }else{
   $("#money_need_login").css("display","none");
 }
 
 // 関数定義
-
-//
 
 </script>

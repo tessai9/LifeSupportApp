@@ -17,7 +17,7 @@
 				<li id="money" onclick="pageAllocator('#contents','./html/money.html')"><a href="#">収支管理</a></li>
 				<li id="todo" onclick="pageAllocator('#contents','./html/todo.html')"><a href="#">todoリスト</a></li>
 				<li id="memo" onclick="pageAllocator('#contents','./html/memo.html')"><a href="#">備忘録</a></li>
-				<li id="logout"><a href="#" onclick="pageAllocator('#contents','./html/login.html')">Logout</a></li>
+				<li id="logout"><a href="#" onclick="logout()">Logout</a></li>
 				<li id="debug_mode"><a href="#" onclick="switchDebugMode();">debug mode</a></li>
 			</ul>
 		</div>
@@ -43,43 +43,41 @@ $(function(){
 	});
 });
 
-// ヘッダーからのページ遷移
-$(".navbar-brand").click(function(){
-	pageAllocator("#contents",'./html/top.html');
-});
-
-// ログイン前後の遷移先表示
-if(!localStorage.getItem("user")){
+// ログイン前後の表示切り替え
+if(!sessionStorage.getItem('loginFlg')){
 	$("#top").css('display','none');
 	$("#logout").css('display','none');
+	$("a.navbar-brand").addEventListener('click',function(){
+			pageAllocator("#contents",'./html/login.html');
+	});
 }else{
 	$("#login").css('display','none');
+	$("a.navbar-brand").addEventListener('click',function(){
+			pageAllocator("#contents",'./html/top.html');
+	});
 }
-
-// ログアウトボタンの挙動
-$("#logout").bind('click',logout());
 
 // 関数定義
 
 // デバッグモード切り替え関数
 function switchDebugMode(){
-	if (!localStorage.getItem("debugFlg")) {
+	if (!sessionStorage.getItem("debugFlg")) {
 		alert("debug mode on");
-		localStorage.setItem("debugFlg",true);
-		localStorage.setItem("user","test");
-		localStorage.setItem("pass","test");
+		sessionStorage.setItem("debugFlg",true);
+		sessionStorage.setItem("loginFlg",true);
+		sessionStorage.setItem("user","test");
+		sessionStorage.setItem("pass","test");
 		deviceInit();
 	} else {
 		alert("debug mode off");
-		localStorage.clear();
-		deviceInit();
+		logout();
 	}
 }
 
 // ユーザー情報の削除
 function logout(){
-	localStorage.removeItem("user");
-	localStorage.removeItem("pass");
+	sessionStorage.clear();
+	deviceInit();
 }
 
 </script>

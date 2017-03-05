@@ -1,40 +1,73 @@
 <h1 class="margin5px">ログイン</h1>
-<form id="loginForm" action="">
-  <div class="input-group width80per margin5px">
-    <span class="input-group-addon">ID</span>
-    <input type="text" class="form-control" id="uid" name="id">
-  </div>
-  <div class="input-group width80per margin5px">
-    <span class="input-group-addon">Password</span>
-    <input type="text" class="form-control" id="upass" name="pass">
-  </div>
-  <button id="loginButton" class="btn btn-success margin5px">Login</button>
-</form>
-
+<div class="input-group width80per margin5px">
+  <span class="input-group-addon">ID</span>
+  <input type="text" class="form-control" id="uid" name="id">
+</div>
+<div class="input-group width80per margin5px">
+  <span class="input-group-addon">Password</span>
+  <input type="text" class="form-control" id="upass" name="pass">
+</div>
+<button id="loginButton" class="btn btn-success margin5px" onclick="onlogin()">Login</button>
+<br>
+<br>
+<br>
+<h1>ユーザー追加</h1>
+<div class="input-group width80per margin5px">
+  <span class="input-group-addon">ID</span>
+  <input type="text" class="form-control" id="new_id" name="id">
+</div>
+<div class="input-group width80per margin5px">
+  <span class="input-group-addon">Password</span>
+  <input type="text" class="form-control" id="new_pass" name="pass">
+</div>
+<button id="register_button" class="btn btn-success margin5px" onclick="onregister()">Register</button>
 <script>
-  $(function(){
-    $("#loginButton").click(function(){
-      var userId = $("#uid").val();
-      var userPass = $("#upass").val();
+  // 変数定義
+  var userId = $("#uid").val();     // ログイン用ID
+  var userPass = $("#upass").val(); // ログイン用パスワード
 
-      $.post({
-        url:'../rb/server.rb',
-        data:{target : 'login', id : userId, pass : userPass },
-        dataType:'text',
-        success: function(flag){
-          if (flag) {
-            //pageAllocator('#contents','./html/top.html');
-            //localStorage.setItem('user',userId);
-            //localStorage.setItem('pass',userPass);
-            alert(flag);
-          } else {
-            pageAllocator('#contents','./html/error.html');
-          }
-        },
-        error: function(){
-          pageAllocator('#contents','./html/error.html');
-        }
-      });
-    });
-  });
+  var newId = $("#new_id").val();     // 登録用ID
+  var newPass = $("#new_pass").val(); // 登録用パスワード
+
+  // 処理部
+
+
+  // 関数定義
+
+  // ログイン処理
+  function onlogin(){
+    var userId = $("#uid").val();     // ログイン用ID
+    var userPass = $("#upass").val(); // ログイン用パスワード
+    $("#loginButton").addEventListener('click',checkUser(userId,userPass),false);
+  }
+
+  // 登録処理
+  function onregister(){
+    var newId = $("#new_id").val();     // 登録用ID
+    var newPass = $("#new_pass").val(); // 登録用パスワード
+    $("#loginButton").addEventListener('click',registerUser(newId,newPass),false);
+  }
+
+  // ログイン処理内容
+  function checkUser(userId,userPass){
+    if (localStorage.getItem(userId) == userPass) {
+      sessionStorage.setItem('user',userId);
+      sessionStorage.setItem('pass',userPass);
+      sessionStorage.setItem('loginFlg',true);
+      deviceInit();
+    } else {
+      alert('Login failed !!');
+    }
+  }
+
+  // 新規ユーザー登録
+  function registerUser(newId,newPass){
+    if (newId != '' && newPass != '') {
+      localStorage.setItem(newId,newPass);
+      alert('Registered !!');
+    } else {
+      alert('Register failed !!');
+    }
+  }
+
 </script>

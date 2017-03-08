@@ -47,12 +47,12 @@ $(function(){
 if(!sessionStorage.getItem('loginFlg')){
 	$("#top").css('display','none');
 	$("#logout").css('display','none');
-	$("a.navbar-brand").addEventListener('click',function(){
+	$("a.navbar-brand").bind('click',function(){
 			pageAllocator("#contents",'./html/login.html');
 	});
 }else{
 	$("#login").css('display','none');
-	$("a.navbar-brand").addEventListener('click',function(){
+	$("a.navbar-brand").bind('click',function(){
 			pageAllocator("#contents",'./html/top.html');
 	});
 }

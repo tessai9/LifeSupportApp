@@ -1,7 +1,13 @@
-<h1 class="margin5px">ToDoリスト</h1>
+<h1 class="alert alert-warning margin5px">ToDoリスト</h1>
 <div id="todo_need_login" class="margin5px" align="center">
-  <h2>ログインしてToDoリストを活用しよう！</h2>
+  <h2>ログインしてToDo管理機能を活用しよう！</h2>
   <button class="btn btn-default" onclick="pageAllocator('#contents','./html/login.html')">Login</button>
+</div>
+<div id="todo_menu" class="margin5px width50per">
+  <div class="form-group" id="todo_category"> <!-- カテゴリで抽出 -->
+		<label for="todoSelect">収支カテゴリ</label>
+		<select class="form-control" id="todoSelect"></select>
+	</div>
 </div>
 <script>
 <!--
@@ -10,7 +16,7 @@
 // ------------
 // ログイン状況によって表示を変更
 if(!sessionStorage.getItem("loginFlg")){
-//  $("#todo_menu").css("display","none");
+  $("#todo_menu").css("display","none");
 }else{
   $("#todo_need_login").css("display","none");
 }

@@ -1,12 +1,12 @@
-<h1 class="margin5px">収支管理</h1>
+<h1 class="alert alert-success margin5px">収支管理</h1>
 <div id="money_need_login" class="margin5px" align="center">
   <h2>ログインして自分の収支管理をしよう！</h2>
   <button class="btn btn-default" onclick="pageAllocator('#contents','./html/login.html')">Login</button>
 </div>
 <div id="money_menu" class="margin5px width50per">
-  <div class="form-group" id="money_category">
-		<label for="InputSelect">収支カテゴリ</label>
-		<select class="form-control" id="InputSelect"></select>
+  <div class="form-group" id="money_category"> <!-- カテゴリで抽出 -->
+		<label for="moneySelect">収支カテゴリ</label>
+		<select class="form-control" id="moneySelect"></select>
 	</div>
   <button class="btn btn-primary" onclick="pageAllocator('#contents','./html/money_2.html')"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add New</button>
 </div>
@@ -15,6 +15,7 @@
 </table>
 
 <script>
+<!--
 // ------------
 // 処理部
 // ------------
@@ -27,4 +28,5 @@ if(!sessionStorage.getItem("loginFlg")){
 
 // 関数定義
 
+//-->
 </script>

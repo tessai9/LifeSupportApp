@@ -25,8 +25,10 @@
 </nav>
 
 <script type="text/javascript">
+<!--
+// ------------
 // 処理部
-
+// ------------
 // ナビゲーションバーの表示・非表示設定
 $(function(){
   $(".navbar-nav li").click(function(){
@@ -57,7 +59,9 @@ if(!sessionStorage.getItem('loginFlg')){
 	});
 }
 
+// ------------
 // 関数定義
+// ------------
 
 // デバッグモード切り替え関数
 function switchDebugMode(){
@@ -79,5 +83,5 @@ function logout(){
 	sessionStorage.clear();
 	deviceInit();
 }
-
+//-->
 </script>

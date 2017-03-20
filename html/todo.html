@@ -3,3 +3,16 @@
   <h2>ログインしてToDoリストを活用しよう！</h2>
   <button class="btn btn-default" onclick="pageAllocator('#contents','./html/login.html')">Login</button>
 </div>
+<script>
+<!--
+// ------------
+// 処理部
+// ------------
+// ログイン状況によって表示を変更
+if(!sessionStorage.getItem("loginFlg")){
+//  $("#todo_menu").css("display","none");
+}else{
+  $("#todo_need_login").css("display","none");
+}
+//-->
+</script>

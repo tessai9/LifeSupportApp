@@ -35,12 +35,24 @@
   width: 20%;
 }
 
+.width40per{
+  width: 40%;
+}
+
 .width50per{
   width: 50%;
 }
 
 .width80per{
   width: 80%;
+}
+
+.height10per{
+  height: 10%;
+}
+
+.height50px{
+  height: 50px;
 }
 
 .float_r{

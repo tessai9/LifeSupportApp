@@ -1,16 +1,18 @@
 <h1 class="margin5px">ログイン</h1>
 <div class="input-group width80per margin5px">
   <span class="input-group-addon">ID</span>
-  <input type="text" class="form-control" id="uid" name="id">
+  <input type="text" class="form-control height50px" id="uid" name="id">
 </div>
 <div class="input-group width80per margin5px">
   <span class="input-group-addon">Password</span>
-  <input type="text" class="form-control" id="upass" name="pass">
+  <input type="text" class="form-control height50px" id="upass" name="pass">
 </div>
-<button id="loginButton" class="btn btn-success margin5px" onclick="onlogin()">Login</button>
+<button id="loginButton" class="btn btn-success btn-block btn-lg">Login</button>
+<button id="displayAddUser" class="btn btn-info btn-block btn-lg">ユーザーを新しく追加する</button>
 <br>
 <br>
 <br>
+<div id="addUser">
 <h1>ユーザー追加</h1>
 <div class="input-group width80per margin5px">
   <span class="input-group-addon">ID</span>
@@ -20,54 +22,41 @@
   <span class="input-group-addon">Password</span>
   <input type="text" class="form-control" id="new_pass" name="pass">
 </div>
-<button id="register_button" class="btn btn-success margin5px" onclick="onregister()">Register</button>
+<button id="register_button" class="btn btn-danger btn-block btn-lg" onclick="onregister()">Register</button>
+</div>
 <script>
-  // 変数定義
-  var userId = $("#uid").val();     // ログイン用ID
-  var userPass = $("#upass").val(); // ログイン用パスワード
-
-  var newId = $("#new_id").val();     // 登録用ID
-  var newPass = $("#new_pass").val(); // 登録用パスワード
-
+  // ------------
   // 処理部
-
-
-  // 関数定義
-
+  // ------------
   // ログイン処理
-  function onlogin(){
+  $("#loginButton").click(function(){
     var userId = $("#uid").val();     // ログイン用ID
     var userPass = $("#upass").val(); // ログイン用パスワード
-    $("#loginButton").addEventListener('click',checkUser(userId,userPass),false);
-  }
-
-  // 登録処理
-  function onregister(){
-    var newId = $("#new_id").val();     // 登録用ID
-    var newPass = $("#new_pass").val(); // 登録用パスワード
-    $("#loginButton").addEventListener('click',registerUser(newId,newPass),false);
-  }
-
-  // ログイン処理内容
-  function checkUser(userId,userPass){
-    if (localStorage.getItem(userId) == userPass) {
+    if(userId != '' && localStorage.getItem(userId) == userPass){
       sessionStorage.setItem('user',userId);
       sessionStorage.setItem('pass',userPass);
       sessionStorage.setItem('loginFlg',true);
       deviceInit();
-    } else {
-      alert('Login failed !!');
+    }else{
+      alert("login failed!");
     }
-  }
+  });
 
-  // 新規ユーザー登録
-  function registerUser(newId,newPass){
+  // ユーザー追加ボタン表示コントロール
+  $("#addUser").hide();
+  $("#displayAddUser").click(function(){
+    $("#addUser").toggle();
+  });
+
+  // 登録処理
+  $("#register_button").click(function(){
+    var newId = $("#new_id").val();     // 登録用ID
+    var newPass = $("#new_pass").val(); // 登録用パスワード
     if (newId != '' && newPass != '') {
       localStorage.setItem(newId,newPass);
       alert('Registered !!');
     } else {
       alert('Register failed !!');
     }
-  }
-
+  });
 </script>

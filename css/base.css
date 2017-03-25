@@ -88,12 +88,12 @@
   box-shadow: inset 20px;
 }
 
-#section1,
-#section2{
+#panelUnion1,
+#panelUnion2{
   text-align: center;
 }
 
-#section2 span.panel_span{
+#panelUnion2 span.panel_span{
   vertical-align: top;
 }
 
@@ -113,7 +113,7 @@
   color: #fff;
 }
 
-#top_topic1{
+#top_money{
   width: 45%;
   height: 200px;
   background-color: #006600;
@@ -121,7 +121,7 @@
   color: #fff;
 }
 
-#top_topic2{
+#top_todo{
   width: 100%;
   height: 80px;
   background-color: #FF6600;
@@ -130,7 +130,7 @@
   display: block;
 }
 
-#top_topic3{
+#top_memo{
   width: 100%;
   height: 115px;
   line-height: 115px;

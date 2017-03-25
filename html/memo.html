@@ -5,5 +5,14 @@
 </div>
 <script>
 <!--
+// ------------
+// 処理部
+// ------------
+// ログイン状況によって表示を変更
+if(!sessionStorage.getItem("loginFlg")){
+  $("#memo_menu").css("display","none");
+}else{
+  $("#memo_need_login").css("display","none");
+}
 //-->
 </script>

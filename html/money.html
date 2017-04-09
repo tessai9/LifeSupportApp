@@ -4,11 +4,17 @@
   <button class="btn btn-default" onclick="pageAllocator('#contents','./html/login.html')">Login</button>
 </div>
 <div id="money_menu" class="margin5px width50per">
+    <h3>現在の総資産</h3>
+    <h4 class="container-fluid">3000円</h4>
+</div>
   <div class="form-group" id="money_category"> <!-- カテゴリで抽出 -->
 		<label for="moneySelect">収支カテゴリ</label>
 		<select class="form-control" id="moneySelect"></select>
 	</div>
-  <button class="btn btn-primary" onclick="pageAllocator('#contents','./html/money_2.html')"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Add New</button>
+  <button class="btn btn-primary" onclick="pageAllocator('#contents','./html/money_2.html')"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 新しい収支</button>
+</div>
+<div id="money_list">
+  <!-- ループして履歴表示 -->
 </div>
 
 <table class="margin5px">
@@ -17,6 +23,10 @@
 <script>
 <!--
 // ------------
+// 変数定義
+// ------------
+
+// ------------
 // 処理部
 // ------------
 // ログイン状況によって表示を変更
@@ -24,9 +34,20 @@ if(!sessionStorage.getItem("loginFlg")){
   $("#money_menu").css("display","none");
 }else{
   $("#money_need_login").css("display","none");
-}
 
-// 関数定義
+  // 支出情報を取得
+/*  $.ajax(
+    url:"/money",
+    method:"post",
+    datatype:"json",
+    data:userInfo,
+    success:function(data){
+    },
+    error:function(){
+    }
+  );
+*/
+}
 
 //-->
 </script>

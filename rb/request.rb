@@ -5,7 +5,6 @@ require "./requestHandler.rb"
 # CGIハンドラの定義
 cgiHandle = CGI.new
 
-
 # --------パラメータ処理--------
 # リクエストのタイプを取得
 # [money,todo,memo]
@@ -15,7 +14,9 @@ reqType  = cgiHandle["type"]
 reqHandle = requestHandler.new(reqType)
 
 # レスポンスを取得
-resbody = requestHandler.makeResponse(cgiHandle["data"])
+# resbody = requestHandler.makeResponse(cgiHandle["data"])
+resbody = cgiHandle["data"]
+
 
 # --------レスポンス処理--------
 # ページ管理クラスからヘッダーと、内容を返す

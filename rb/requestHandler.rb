@@ -1,26 +1,32 @@
 require "json"
 
+# ---------------------------
 # リクエスト処理クラス
+# ---------------------------
 class requestHandler
-	# ------初期化処理------
-	# リクエストタイプの定義
+	# ------
+	# 初期化処理
+	# ------
+	# ---リクエストタイプの定義---
 	def initialize(type)
 		@reqType = type
-		@responseHeader = "text/html"		# レスポンスヘッダーを初期化
+		@responseHeader = "application/json"		# レスポンスヘッダーを初期化(基本はjsonで返す)
 	end
 
-	# ------各種メソッド定義------
-	# レスポンスヘッダーを返す
+	# ------
+	# 各種メソッド定義
+	# ------
+	# ---レスポンスヘッダーを返す---
 	def header
 		@responseHeader
 	end
 
-	# 現在のリクエストタイプを参照
+	# ---現在のリクエストタイプを参照---
 	def type?
 		@reqType
 	end
 
-	# 資金管理かどうか
+	# ---資金管理かどうか---
 	def is_money?
 		if @reqType == "money"
 			return true
@@ -29,7 +35,7 @@ class requestHandler
 		end
 	end
 
-	# ToDo管理かどうか
+	# ---ToDo管理かどうか---
 	def is_todo?
 		if @reqType == "todo"
 			return true
@@ -38,7 +44,7 @@ class requestHandler
 		end
 	end
 
-	# 備忘録かどうか
+	# ---備忘録かどうか---
 	def is_memo?
 		if @reqType == "memo"
 			return true
@@ -47,16 +53,16 @@ class requestHandler
 		end
 	end
 
-	# 資金管理データ取得メソッド
+	# ---資金管理データ取得メソッド---
 	def moneyMod(param)
-		# ---共通パラメータ取得---
+		# 【共通パラメータ取得】
 		uid = param["uid"]	# ID
 		# 現在の金額
 		SQLite3::execute("SELECT money FROM user WHERE id = #{id}") do |getMoney|
 			money = getMoney["money"]
 		end
 
-		# ---各種処理---
+		# 【各種処理】
 		case param["mode"]
 		# [一覧表示]
 		when "dispHistory"
